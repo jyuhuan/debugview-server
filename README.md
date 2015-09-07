@@ -39,7 +39,7 @@ libraryDependencies += "me.yuhuan" %% "debug-view" % "0.0.0-SNAPSHOT"
 Import the following package wherever you want to invoke the rendering service:
 
 ```scala
-import debugview.RenderService
+import debugview.client.RenderService
 ```
 	
 Call the rendering service like this:
