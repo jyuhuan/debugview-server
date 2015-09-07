@@ -64,7 +64,7 @@ object Server extends App {
       }
     }
 
-
+    clientSocket.close()
 
 
   }

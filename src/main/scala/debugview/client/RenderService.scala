@@ -14,11 +14,11 @@ import poly.util.io.FileIO
  */
 object RenderService {
 
-  val socket = new Socket("127.0.0.1", 1234)
-  val messenger = TcpMessenger(socket)
-  val segmentSize = 1024
 
   def renderHtmlContent(className: String, content: String) = {
+    val socket = new Socket("127.0.0.1", 1234)
+    val messenger = TcpMessenger(socket)
+    val segmentSize = 1024
     messenger.sendInt(TaskCode.RenderHtmlContent)
     val segments = content.grouped(segmentSize).toSeq
     messenger.sendString(className)
@@ -31,6 +31,9 @@ object RenderService {
   }
 
   def renderSvgContent(className: String, content: String) = {
+    val socket = new Socket("127.0.0.1", 1234)
+    val messenger = TcpMessenger(socket)
+    val segmentSize = 1024
     messenger.sendInt(TaskCode.RenderSvg)
     val segments = content.grouped(segmentSize).toSeq
     messenger.sendString(className)

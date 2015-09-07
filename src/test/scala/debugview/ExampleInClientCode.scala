@@ -14,6 +14,9 @@ object ExampleInClientCode extends App {
 
   val htmlStr = "<html>Html page from the <strong>test client</strong>. </html>"
   renderHtml(htmlStr)
+  renderHtml(htmlStr)
+  renderHtml(htmlStr)
+  renderHtml(htmlStr)
 
   val bp = 0
 
