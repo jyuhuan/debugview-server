@@ -1,6 +1,6 @@
 package debugview
 
-import java.net.Socket
+import debugview.client._
 
 /**
  * @author Yuhuan Jiang (jyuhuan@gmail.com).

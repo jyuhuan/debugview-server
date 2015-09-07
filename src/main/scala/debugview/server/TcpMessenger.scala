@@ -1,4 +1,4 @@
-package debugview
+package debugview.server
 
 import java.io._
 import java.net.Socket
