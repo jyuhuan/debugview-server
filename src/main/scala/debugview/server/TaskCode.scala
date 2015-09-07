@@ -7,7 +7,6 @@ package debugview.server
  */
 object TaskCode {
   val RenderHtmlContent = 0
-  val RenderHtmlAtPath = 1
-  val RenderSvg = 2
-  val RenderGraphviz = 3
+  val RenderSvg = 1
+  val RenderGraphviz = 2
 }

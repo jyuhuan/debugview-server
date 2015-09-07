@@ -4,6 +4,8 @@ import debugview.server._
 
 import java.net.Socket
 
+import poly.util.io.FileIO
+
 /**
  * Methods for rendering. Clients, please use these methods to render your objects.
  * Please ensure that the rendering server is running before calling these methods.
@@ -16,21 +18,28 @@ object RenderService {
   val messenger = TcpMessenger(socket)
   val segmentSize = 1024
 
-  def renderHtmlContent(content: String) = {
+  def renderHtmlContent(className: String, content: String) = {
     messenger.sendInt(TaskCode.RenderHtmlContent)
     val segments = content.grouped(segmentSize).toSeq
+    messenger.sendString(className)
     messenger.sendStrings(segments)
   }
 
-  def renderHtmlAtPath(path: String) = {
-    messenger.sendInt(TaskCode.RenderHtmlContent)
-    messenger.sendString(path)
+  def renderHtmlAtPath(className: String, path: String) = {
+    val htmlContent = FileIO.readAll(path)
+    renderHtmlContent(className, htmlContent)
   }
 
-  def renderSvgContent(content: String) = ???
-  def renderSvgAtPath(content: String) = ???
+  def renderSvgContent(className: String, content: String) = {
+    messenger.sendInt(TaskCode.RenderSvg)
+    val segments = content.grouped(segmentSize).toSeq
+    messenger.sendString(className)
+    messenger.sendStrings(segments)
+  }
 
-  def renderGraphvizContent(content: String) = ???
-  def renderGraphvizAtPath(content: String) = ???
+  def renderSvgAtPath(className: String, path: String) = {
+    val svgContent = FileIO.readAll(path)
+    renderSvgContent(className, svgContent)
+  }
 
 }

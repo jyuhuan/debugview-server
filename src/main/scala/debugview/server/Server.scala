@@ -28,28 +28,32 @@ object Server extends App {
     taskCode match {
       case TaskCode.RenderHtmlContent ⇒ {
         println("Received new HTML page rendering task... ")
+
+        println("Receiving class name...")
+        val className = messenger.receiveString
+
         println("\tWaiting for segments... ")
         val segments = messenger.receiveStrings
         println("\tSegments received. ")
         val htmlStr = segments.mkString("")
-        Renderer.showHtmlWindow("Test", htmlStr, isPath = false)
-
-        println("done. \n")
-      }
-
-      case TaskCode.RenderHtmlAtPath ⇒ {
-        println("Received new HTML page rendering task... ")
-        println("\tWaiting for URL... ")
-        val url = messenger.receiveString
-        println("\tURL received. ")
-        Renderer.showHtmlWindow("Test", url, isPath = true)
+        Renderer.showHtmlWindow(className, htmlStr)
 
         println("done. \n")
       }
 
       case TaskCode.RenderSvg ⇒ {
-        println("Rendering SVG image... ")
-        println("\tNot implemented yet... \n")
+        println("Received new SVG rendering task... ")
+
+        println("Receiving class name...")
+        val className = messenger.receiveString
+
+        println("\tWaiting for segments... ")
+        val segments = messenger.receiveStrings
+        println("\tSegments received. ")
+        val htmlStr = segments.mkString("")
+        Renderer.showSvgWindow(className, htmlStr)
+
+        println("done. \n")
       }
       case TaskCode.RenderGraphviz ⇒ {
         println("Rendering Graphviz dot... ")

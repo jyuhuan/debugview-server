@@ -20,7 +20,7 @@ private object Renderer {
   val panelForegroundColor = Color.rgb(199, 199, 199)
   val contentBackgroundColor = Color.rgb(57, 57, 57)
 
-  def showHtmlWindow(title: String, htmlStr: String, isPath: Boolean) = {
+  def showHtmlWindow(title: String, html: String) = {
     println("\tShowing window...")
 
     SwingUtilities.invokeLater(new Runnable {
@@ -39,9 +39,7 @@ private object Renderer {
             // Main webview
             val wbvContent = new WebView()
 
-            if (isPath) wbvContent.getEngine.load(htmlStr)
-            else wbvContent.getEngine.loadContent(htmlStr)
-
+            wbvContent.getEngine.loadContent(html)
 
             // Toolbar under main webview
             val toolbar = new ToolBar()
@@ -49,6 +47,8 @@ private object Renderer {
             wbvContent.zoomProperty().bind(slider.valueProperty())
             toolbar.getItems.addAll(slider)
 
+
+            VBox.setVgrow(wbvContent, Priority.ALWAYS)
 
             // Add everything to the root
             root.getChildren.addAll(wbvContent, toolbar)
@@ -60,6 +60,13 @@ private object Renderer {
       }
     })
   }
+
+  def showSvgWindow(title: String, svg: String) = {
+    val html = s"<html> $svg </html>"
+    showHtmlWindow(title, html)
+  }
+
+
 
 
   def showPersistentWindow() = {
