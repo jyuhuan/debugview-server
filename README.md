@@ -2,7 +2,7 @@
 
 ## Example Usage
 
-Run `Server` first. Then, in your code, call the render service like this:
+Run `Server` first. Then, in your code, call the rendering service like this:
 
 ```scala
 val htmlStr = "<html>Your content. </html>"
