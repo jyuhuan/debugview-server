@@ -13,7 +13,8 @@ object ExampleInClientCode extends App {
   }
 
   val htmlStr = "<html>Html page from the <strong>test client</strong>. </html>"
-  renderHtml(htmlStr)
+  val seq = Seq(1, 2, 3, 4, 8)
+  renderHtml(seq)
   renderHtml(htmlStr)
   renderHtml(htmlStr)
   renderHtml(htmlStr)
