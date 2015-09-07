@@ -14,9 +14,7 @@ Change current directory into the downloaded `debug-view/`. Execute the followin
 
 	sbt run
 
-Press `2` to run the server. 
-
-Notice that you should keep the first window that appears minimized and do not close it. 
+Notice that you may ignore or minimize the first window that appears, but do not close it. 
 
 
 ### Invoking the Rendering Sevice
