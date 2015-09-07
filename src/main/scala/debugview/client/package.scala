@@ -1,20 +1,20 @@
 package debugview
 
-import java.net.Socket
+import debugview.server._
+
+import java.net._
 
 /**
- * Methods for rendering. Clients, please use these methods to render your objects.
- * Please ensure that the rendering server is running before calling these methods.
- *
- * @author Yuhuan Jiang (jyuhuan@gmail.com).
+ * @author Tongfei Chen (ctongfei@gmail.com).
  */
-object RenderService {
+package object client {
 
   val socket = new Socket("127.0.0.1", 1234)
   val messenger = TcpMessenger(socket)
   val segmentSize = 1024
 
-  def renderHtmlContent(content: String) = {
+  def renderHtml[T](x: T)(implicit f: HtmlRenderer[T]) = {
+    val content = f.str(x)
     messenger.sendInt(TaskCode.RenderHtmlContent)
     val segments = content.grouped(segmentSize).toSeq
     messenger.sendStrings(segments)

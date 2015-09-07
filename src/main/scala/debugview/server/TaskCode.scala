@@ -1,4 +1,4 @@
-package debugview
+package debugview.server
 
 /**
  * Codes for different rendering tasks.

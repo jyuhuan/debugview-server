@@ -12,6 +12,10 @@ isSnapshot := true
 
 scalacOptions in (Compile, doc) += "-diagrams"
 
+resolvers += Resolver.sonatypeRepo("snapshots")
+
+libraryDependencies += "me.tongfei" %% "poly-util" % "0.2.3-SNAPSHOT"
+
 publishTo := {
   val nexus = "https://oss.sonatype.org/"
   if (isSnapshot.value)

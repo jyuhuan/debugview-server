@@ -1,14 +1,12 @@
-package debugview
+package debugview.server
 
 import javafx.application.Platform
 import javafx.embed.swing.JFXPanel
-import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.scene._
 import javafx.scene.control._
 import javafx.scene.layout._
 import javafx.scene.paint.Color
-import javafx.scene.shape.Rectangle
 import javafx.scene.web.WebView
 import javafx.stage._
 import javax.swing.SwingUtilities
