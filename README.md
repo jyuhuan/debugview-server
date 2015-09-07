@@ -2,7 +2,7 @@
 
 ## Example Usage
 
-To use DebugView, you need to run `Server` first, and then invoke the rendering service from your code. The following 2 section explains this in detail.
+To use DebugView, you need to run `Server` first, and then invoke the rendering service from your code. The following 2 sections explain this in detail.
 
 ### Running the Server
 
@@ -13,13 +13,6 @@ Clone this repository using:
 Change current directory into the downloaded `debug-view/`. Execute the following command:
 
 	sbt run
-
-You may see the following prompt:
-
-	Multiple main classes detected, select one to run:
-	
-	 [1] debugview.ExampleClientCode
-	 [2] debugview.Server
 
 Press `2` to run the server. 
 
