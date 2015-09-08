@@ -1,4 +1,4 @@
-name := "debug-view"
+name := "debugview-server"
 
 version := "0.0.0-SNAPSHOT"
 
@@ -15,6 +15,7 @@ scalacOptions in (Compile, doc) += "-diagrams"
 resolvers += Resolver.sonatypeRepo("snapshots")
 
 libraryDependencies += "me.tongfei" %% "poly-util" % "0.2.3-SNAPSHOT"
+libraryDependencies += "me.yuhuan" %% "yutil" % "0.0.2-SNAPSHOT"
 
 publishTo := {
   val nexus = "https://oss.sonatype.org/"
@@ -27,7 +28,7 @@ publishTo := {
 publishArtifact in Test := false
 
 pomExtra :=
-  <url>https://github.com/jyuhuan/debug-view</url>
+  <url>https://github.com/jyuhuan/debugview-server</url>
     <licenses>
       <license>
         <name>MIT</name>
@@ -36,8 +37,8 @@ pomExtra :=
       </license>
     </licenses>
     <scm>
-      <url>git@github.com:jyuhuan/debug-view.git</url>
-      <connection>scm:git:git@github.com:jyuhuan/debug-view.git</connection>
+      <url>git@github.com:jyuhuan/debugview-server.git</url>
+      <connection>scm:git:git@github.com:jyuhuan/debugview-server.git</connection>
     </scm>
     <developers>
       <developer>
