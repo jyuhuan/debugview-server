@@ -28,7 +28,7 @@ object Server extends App {
     val taskCode = messenger.receiveInt
 
     taskCode match {
-      case TaskCode.RenderHtmlContent ⇒ {
+      case TaskCode.RenderHtml ⇒ {
         println("Received new HTML page rendering task... ")
 
         println("Receiving class name...")
