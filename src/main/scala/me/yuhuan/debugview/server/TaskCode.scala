@@ -1,4 +1,4 @@
-package debugview.server
+package me.yuhuan.debugview.server
 
 /**
  * Codes for different rendering tasks.

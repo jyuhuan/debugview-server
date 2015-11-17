@@ -1,8 +1,10 @@
-package debugview.server
+package me.yuhuan.debugview.server
 
 import java.net._
 
+import me.yuhuan.util.io._
 import me.yuhuan.util.net.TcpMessenger
+import scala.sys.process._
 
 
 /**
@@ -52,14 +54,31 @@ object Server extends App {
         println("\tWaiting for segments... ")
         val segments = messenger.receiveStrings
         println("\tSegments received. ")
-        val htmlStr = segments.mkString("")
-        Renderer.showSvgWindow(className, htmlStr)
+        val svgStr = segments.mkString("")
+        Renderer.showSvgWindow(className, svgStr)
 
         println("done. \n")
       }
       case TaskCode.RenderGraphviz ⇒ {
         println("Rendering Graphviz dot... ")
-        println("\tNot implemented yet... \n")
+
+        println("Receiving class name...")
+        val className = messenger.receiveString
+        println("\tWaiting for segments... ")
+        val segments = messenger.receiveStrings
+        println("\tSegments received. ")
+        val dotStr = segments.mkString("")
+
+
+        val tmpFileName = getClass.getResource("/tmp.dot").getPath
+        TextFile.writeAll(tmpFileName)(dotStr)
+
+        val svgFileName = getClass.getResource("/tmp.svg").getPath
+        s"dot -Tsvg $tmpFileName -o $svgFileName".!
+        TextFile.deleteIfExists(tmpFileName)
+
+        val svgStr = TextFile.readAll(svgFileName)
+        Renderer.showSvgWindow(className, svgStr)
       }
       case _ ⇒ {
         println(s"Unknown task code $taskCode received! \n")

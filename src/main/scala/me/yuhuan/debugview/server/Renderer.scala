@@ -1,4 +1,4 @@
-package debugview.server
+package me.yuhuan.debugview.server
 
 import javafx.application.Platform
 import javafx.embed.swing.JFXPanel
@@ -16,9 +16,9 @@ import javax.swing.SwingUtilities
  */
 private object Renderer {
 
-  val panelBackgroundColor = Color.rgb(77, 80, 82)
-  val panelForegroundColor = Color.rgb(199, 199, 199)
-  val contentBackgroundColor = Color.rgb(57, 57, 57)
+  val panelBackgroundColor = Color.rgb(60, 63, 65)
+  val panelForegroundColor = Color.rgb(187, 187, 187)
+  val contentBackgroundColor = Color.rgb(43, 43, 43)
 
   def showHtmlWindow(title: String, html: String) = {
     println("\tShowing window...")
